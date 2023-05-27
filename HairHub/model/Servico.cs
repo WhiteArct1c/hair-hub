@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HairHub.model
 {
-    class Servico: EntidadeDominio
+    class Servico:EntidadeDominio
     {
         public string Nome { get; set; }
         public string Descricao { get; set; }
@@ -16,11 +16,9 @@ namespace HairHub.model
 
         public Servico(string nome, string descricao, string valor)
         {
-            this.Nome = nome;
-            this.Descricao = descricao;
-            this.Valor = valor;
+            Nome = nome;
+            Descricao = descricao;
+            Valor = valor;
         }
-
-
     }
 }
