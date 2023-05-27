@@ -29,7 +29,7 @@ namespace HairHub.dao.impl
                 response.Append("Erro ao inserir cliente, por favor, tente novamente mais tarde!");
                 return response.ToString();
             }
-            response.Append("Cliente inserido com sucesso!");
+            response.Append("Cliente cadastrado com sucesso!");
             return response.ToString();      
         }
 
@@ -99,7 +99,7 @@ namespace HairHub.dao.impl
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                response.Append("Erro ao deletar cliente, por favor, tente novamente mais tarde!");
+                response.Append("Erro ao recuperar clientes, por favor, tente novamente mais tarde!");
             }
 
             return dr;
@@ -130,7 +130,7 @@ namespace HairHub.dao.impl
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                response.Append("Erro ao deletar cliente, por favor, tente novamente mais tarde!");
+                response.Append("Erro interno ao encontrar cliente solicitado, por favor, tente novamente mais tarde!");
             }
             return cliente;
         }
