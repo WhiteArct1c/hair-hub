@@ -19,5 +19,10 @@ namespace HairHub.db
                 connectionString.Open();
             }
         }
+
+        public static void closeConnection()
+        {
+            connectionString.Close();
+        }
     }
 }
