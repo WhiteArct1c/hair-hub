@@ -98,6 +98,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="model\Agendamento.cs" />
+    <Compile Include="model\ClienteServico.cs" />
     <Compile Include="model\Servico.cs" />
     <Compile Include="model\Cliente.cs" />
     <Compile Include="model\EntidadeDominio.cs" />
