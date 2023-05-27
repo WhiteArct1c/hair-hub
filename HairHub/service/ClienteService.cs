@@ -12,30 +12,6 @@ namespace HairHub.service
 {
     internal class ClienteService
     {
-
-        public interface IClienteServico
-        {
-            string NomeCliente { get; }
-            string TelefoneCliente { get; }
-            string NomeServico { get; }
-            string ValorServico { get; }
-        }
-        public class ClienteServico : IClienteServico
-        {
-            public string NomeCliente { get; set; }
-            public string TelefoneCliente { get; set; }
-            public string NomeServico { get; set; }
-            public string ValorServico { get; set; }
-
-            public ClienteServico(string nomeCliente, string telefoneCliente, string nomeServico, string valorServico)
-            {
-                NomeCliente = nomeCliente;
-                TelefoneCliente = telefoneCliente;
-                NomeServico = nomeServico;
-                ValorServico = valorServico;
-            }
-        }// tirar daqui talvez?
-
         private ClienteDAO clienteDao;
 
         public ClienteService()
@@ -111,9 +87,9 @@ namespace HairHub.service
 
         }
 
-        public List<IClienteServico> ObterServicosCliente(Cliente cliente)
+        public List<ClienteServico> ObterServicosCliente(Cliente cliente)
         {
-            List<IClienteServico> servicosCliente = new List<IClienteServico>();
+            List<ClienteServico> servicosCliente = new List<ClienteServico>();
             var reader = clienteDao.findAllClienteServicos(cliente);
 
             while (reader.Read())
@@ -124,7 +100,7 @@ namespace HairHub.service
                 string nomeServico = reader["NOMESV"].ToString();
                 string valorServico = reader["VALOR"].ToString();
 
-                IClienteServico clienteServico = new ClienteServico(nomeCliente, telefoneCliente, nomeServico, valorServico);
+                ClienteServico clienteServico = new ClienteServico(nomeCliente, telefoneCliente, nomeServico, valorServico);
                 servicosCliente.Add(clienteServico);
             }
             ConnDB.closeConnection();
