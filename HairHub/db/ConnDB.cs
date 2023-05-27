@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.Data;
+using System;
 
 namespace HairHub.db
 {
@@ -16,8 +17,15 @@ namespace HairHub.db
         {
             if(connectionString.State != ConnectionState.Open)
             {
-                connectionString.Open();
-                return connectionString;
+                try
+                {
+                    connectionString.Open();
+                    return connectionString;
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
             return connectionString;
         }
