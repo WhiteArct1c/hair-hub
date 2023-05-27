@@ -12,12 +12,14 @@ namespace HairHub.db
             "password=pscale_pw_QjFvyCbizFKhEypqHJPwbDlr6T3PzCjmJSVWjOhflZw"
             );
 
-        public static void openConnection()
+        public static MySqlConnection openConnection()
         {
             if(connectionString.State != ConnectionState.Open)
             {
                 connectionString.Open();
+                return connectionString;
             }
+            return connectionString;
         }
 
         public static void closeConnection()
