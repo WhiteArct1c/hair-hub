@@ -20,5 +20,13 @@ namespace HairHub.model
             Descricao = descricao;
             Valor = valor;
         }
+
+        public Servico(int id,string nome, string descricao, string valor)
+        {
+            Id = id;
+            Nome = nome;
+            Descricao = descricao;
+            Valor = valor;
+        }
     }
 }

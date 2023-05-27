@@ -22,5 +22,14 @@ namespace HairHub.model
             IdServico = idServico;
             IdCliente = idCliente;
         }
+
+        public Agendamento(int id,string data, string hora, int idServico, int idCliente)
+        {
+            Id = id;
+            Data = data;
+            Hora = hora;
+            IdServico = idServico;
+            IdCliente = idCliente;
+        }
     }
 }

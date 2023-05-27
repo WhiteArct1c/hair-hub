@@ -130,7 +130,7 @@ namespace HairHub.dao.impl
                     agendamento.Data = dr[1].ToString();
                     agendamento.Hora = dr[2].ToString();
                     agendamento.IdServico = Convert.ToInt32(dr[3]);
-                    agendamento.IdServico = Convert.ToInt32(dr[4]);
+                    agendamento.IdCliente = Convert.ToInt32(dr[4]);
                 }
 
                 ConnDB.closeConnection();
