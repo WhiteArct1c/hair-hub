@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dao\IDAO.cs" />
+    <Compile Include="dao\impl\AgendamentoDAO.cs" />
     <Compile Include="dao\impl\ClienteDAO.cs" />
     <Compile Include="dao\impl\ServicoDAO.cs" />
     <Compile Include="db\ConnDB.cs" />
@@ -97,9 +98,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="model\Agendamento.cs" />
+    <Compile Include="model\Servico.cs" />
     <Compile Include="model\Cliente.cs" />
     <Compile Include="model\EntidadeDominio.cs" />
-    <Compile Include="model\Servico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
