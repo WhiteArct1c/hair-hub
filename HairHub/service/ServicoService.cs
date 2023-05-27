@@ -24,8 +24,7 @@ namespace HairHub.service
         {
             if (valor < 0)
             {
-                MessageBox.Show("O valor do serviço não pode ser menor que 0.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return "Erro ao criar serviço";
+                return "O valor do serviço não pode ser menor que 0.";
             }
 
                 Servico novoServico = new Servico(nome, descricao, valor.ToString());
@@ -37,8 +36,7 @@ namespace HairHub.service
         {
             if (valor < 0)
             {
-                MessageBox.Show("O valor do serviço não pode ser menor que 0.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return "Erro ao criar serviço";
+                return "O valor do serviço não pode ser menor que 0";
             }
 
                 Servico servico = servicoDao.FindById(id);
