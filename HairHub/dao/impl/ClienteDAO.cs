@@ -141,7 +141,7 @@ namespace HairHub.dao.impl
             StringBuilder response = new StringBuilder();
             MySqlDataReader dr = null;
 
-            sql.Append("SELECT DISTINCT C.NOME, C.TELEFONE, SV.NOME, SV.VALOR ");
+            sql.Append("SELECT DISTINCT C.NOME, C.TELEFONE, SV.NOME AS NOMESV, SV.VALOR ");
             sql.Append("FROM AGENDAMENTO AG ");
             sql.Append("INNER JOIN CLIENTE C ON C.ID = AG.ID_CLIENTE ");
             sql.Append("INNER JOIN SERVICO SV ON SV.ID = AG.ID_SERVICO ");
