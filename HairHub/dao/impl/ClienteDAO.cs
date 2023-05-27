@@ -16,7 +16,7 @@ namespace HairHub.dao.impl
             StringBuilder sql = new StringBuilder();
             StringBuilder response = new StringBuilder();
 
-            sql.Append("INSERT INTO CLIENTE(NOME, TELEFONE) VALUES ("+cliente.Nome+","+cliente.Telefone+")");
+            sql.Append("INSERT INTO CLIENTE(NOME, TELEFONE) VALUES ('"+cliente.Nome+"','"+cliente.Telefone+"')");
 
             try
             {
@@ -29,7 +29,6 @@ namespace HairHub.dao.impl
                 response.Append("Erro ao inserir cliente, por favor, tente novamente mais tarde!");
                 return response.ToString();
             }
-
             response.Append("Cliente inserido com sucesso!");
             return response.ToString();      
         }
@@ -39,7 +38,7 @@ namespace HairHub.dao.impl
             StringBuilder sql = new StringBuilder();
             StringBuilder response = new StringBuilder();
 
-            sql.Append("UPDATE CLIENTE SET NOME = " + cliente.Nome + ", TELEFONE = " + cliente.Telefone +" ");
+            sql.Append("UPDATE CLIENTE SET NOME = '" + cliente.Nome + "', TELEFONE = '" + cliente.Telefone +"' ");
             sql.Append("WHERE ID = "+cliente.Id);
 
             try
@@ -96,7 +95,6 @@ namespace HairHub.dao.impl
             {
                 MySqlCommand command = new MySqlCommand(sql.ToString(), ConnDB.openConnection());
                 dr = command.ExecuteReader();
-                ConnDB.closeConnection();
             }
             catch (Exception e)
             {
@@ -111,19 +109,18 @@ namespace HairHub.dao.impl
         {
             StringBuilder sql = new StringBuilder();
             StringBuilder response = new StringBuilder();
-            Cliente cliente = null;
+            Cliente cliente = new Cliente();
 
-            sql.Append("SELECT ID, NOME, TELEFONE FROM CLIENTE WHERE ID = ?");
+            sql.Append("SELECT ID, NOME, TELEFONE FROM CLIENTE WHERE ID = '"+id+"'");
 
             try
             {
                 MySqlCommand command = new MySqlCommand(sql.ToString(), ConnDB.openConnection());
-                command.Parameters.AddWithValue("@ID", id);
                 MySqlDataReader dr = command.ExecuteReader();
 
                 if (dr.Read())
                 {
-                    cliente.Id = Convert.ToInt32(dr[0].ToString());
+                    cliente.Id = Convert.ToInt32(dr[0]);
                     cliente.Nome = dr[1].ToString();
                     cliente.Telefone = dr[2].ToString();
                 }

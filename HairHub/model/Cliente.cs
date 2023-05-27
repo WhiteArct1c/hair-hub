@@ -11,6 +11,8 @@ namespace HairHub.model
         public string Nome { get; set; }
         public string Telefone { get; set; }
 
+        public Cliente(){ }
+
         public Cliente(string nome, string telefone)
         {
             Nome = nome;
