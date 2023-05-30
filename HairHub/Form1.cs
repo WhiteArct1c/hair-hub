@@ -4,12 +4,12 @@ using System.Windows.Forms;
 
 namespace HairHub
 {
-    public partial class FormMain : Form
+    public partial class Form1 : Form
     {
         private Form activeForm;
 
 
-        public FormMain()
+        public Form1()
         {
 
             InitializeComponent();
