@@ -86,6 +86,48 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAddServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddServico.Designer.cs">
+      <DependentUpon>FormAddServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddCliente.Designer.cs">
+      <DependentUpon>FormAddCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDetalhesCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDetalhesCliente.Designer.cs">
+      <DependentUpon>FormDetalhesCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormServicos .cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormServicos .Designer.cs">
+      <DependentUpon>FormServicos .cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormClientes.Designer.cs">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddAgendamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddAgendamento.Designer.cs">
+      <DependentUpon>FormAddAgendamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAgendamentos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAgendamentos.Designer.cs">
+      <DependentUpon>FormAgendamentos.cs</DependentUpon>
+    </Compile>
     <Compile Include="dao\IDAO.cs" />
     <Compile Include="dao\impl\AgendamentoDAO.cs" />
     <Compile Include="dao\impl\ClienteDAO.cs" />
@@ -104,6 +146,30 @@
     <Compile Include="model\EntidadeDominio.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddServico.resx">
+      <DependentUpon>FormAddServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddCliente.resx">
+      <DependentUpon>FormAddCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDetalhesCliente.resx">
+      <DependentUpon>FormDetalhesCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormServicos .resx">
+      <DependentUpon>FormServicos .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormClientes.resx">
+      <DependentUpon>FormClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddAgendamento.resx">
+      <DependentUpon>FormAddAgendamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAgendamentos.resx">
+      <DependentUpon>FormAgendamentos.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="service\AgendamentoService.cs" />
     <Compile Include="service\ClienteService.cs" />
     <Compile Include="service\ServicoService.cs" />
@@ -118,6 +184,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -133,6 +200,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\shopping-list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogoHairHub.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\value.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tesoura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\casa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pesquisar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
