@@ -76,7 +76,8 @@ namespace HairHub.service
         {
             Cliente cliente = new Cliente();
             cliente = clienteDao.FindById(id);
-            if(cliente != null && cliente.Id == id)
+            Console.WriteLine("ID: " + cliente.Id, "Name: " + cliente.Nome, "Telefone: " + cliente.Telefone);
+            if (cliente != null && cliente.Id == id)
             {
                 return cliente;
             }
@@ -85,6 +86,14 @@ namespace HairHub.service
                 return null;
             }
 
+        }
+
+        public List<Cliente> ObterClientesPorNome(string nome)
+        {
+            List<Cliente> clientes = new List<Cliente>();
+            clientes = clienteDao.FindByName(nome.Trim());
+
+            return clientes;
         }
 
         public List<ClienteServico> ObterServicosCliente(Cliente cliente)

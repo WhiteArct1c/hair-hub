@@ -10,26 +10,32 @@ namespace HairHub.model
     {
         public string Data { get; set; }
         public string Hora { get; set; }
-        public int IdServico { get; set; }
-        public int IdCliente { get; set; }
+
+        public Servico Servico { get; set; }
+        public Cliente Cliente { get; set; }
 
         public Agendamento() { }
 
-        public Agendamento(string data, string hora, int idServico, int idCliente)
+        public Agendamento(int id) {
+            Id = id;
+        }
+
+        public Agendamento(string data, string hora, Servico servico, Cliente cliente)
         {
             Data = data;
             Hora = hora;
-            IdServico = idServico;
-            IdCliente = idCliente;
+            Servico = servico;
+            Cliente = cliente;
         }
 
-        public Agendamento(int id,string data, string hora, int idServico, int idCliente)
+        public Agendamento(int id,string data, string hora, Servico servico, Cliente cliente)
         {
             Id = id;
             Data = data;
             Hora = hora;
-            IdServico = idServico;
-            IdCliente = idCliente;
+            Servico = servico;
+            Cliente = cliente;
         }
+
     }
 }

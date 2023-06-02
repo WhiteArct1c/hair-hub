@@ -19,53 +19,57 @@ namespace HairHub.service
             agendamentoDao = new AgendamentoDAO();
         }
 
-        public string CadastrarAgendamento(string data, string hora, int idServico, int idCliente)
+        public string CadastrarAgendamento(string data, string hora, int IdServico, int IdCliente)
         {
             Cliente clienteExiste = new Cliente();
             ClienteService clienteService = new ClienteService();
-            clienteExiste = clienteService.ObterClientePorId(idCliente);
-            if(clienteExiste == null || clienteExiste.Id != idCliente)
+            clienteExiste = clienteService.ObterClientePorId(IdCliente);
+            if(clienteExiste == null || clienteExiste.Id != IdCliente)
             {
                 return "Cliente não encontrado.";
             }
 
             Servico servicoExiste = new Servico();
             ServicoService servicoService = new ServicoService();
-            servicoExiste = servicoService.ObterServicoPorId(idServico);
-            if (servicoExiste == null || servicoExiste.Id != idServico)
+            servicoExiste = servicoService.ObterServicoPorId(IdServico);
+            if (servicoExiste == null || servicoExiste.Id != IdServico)
             {
                 return "Serviço não encontrado.";
             }
 
-            Agendamento novoAgendamento = new Agendamento(data, hora, idServico, idCliente);
+            Agendamento novoAgendamento = new Agendamento(data, hora, servicoExiste, clienteExiste);
             return agendamentoDao.Create(novoAgendamento);
         }
 
-        public string AtualizarAgendamento(int id, string data, string hora, int idServico, int idCliente)
+        public string AtualizarAgendamento(int id, string data, string hora, int IdServico, int IdCliente)
         {
+            Console.WriteLine("Chegou no service agendamento");
+            Console.WriteLine("Id ag:"+id + "data"+data + "IdServico:"+IdServico + "IdCliente:"+ IdCliente);
+
             Cliente clienteExiste = new Cliente();
             ClienteService clienteService = new ClienteService();
-            clienteExiste = clienteService.ObterClientePorId(idCliente);
-            if (clienteExiste == null || clienteExiste.Id != idCliente)
+            clienteExiste = clienteService.ObterClientePorId(IdCliente);
+            if (clienteExiste == null || clienteExiste.Id != IdCliente)
             {
                 return "Cliente não encontrado.";
             }
 
             Servico servicoExiste = new Servico();
             ServicoService servicoService = new ServicoService();
-            servicoExiste = servicoService.ObterServicoPorId(idServico);
-            if (servicoExiste == null || servicoExiste.Id != idServico)
+            servicoExiste = servicoService.ObterServicoPorId(IdServico);
+            if (servicoExiste == null || servicoExiste.Id != IdServico)
             {
                 return "Serviço não encontrado.";
             }
 
             Agendamento agendamento = agendamentoDao.FindById(id);
+
             if (agendamento != null && agendamento.Id == id)
             {
                 agendamento.Data = data;
                 agendamento.Hora = hora;
-                agendamento.IdServico = idServico;
-                agendamento.IdCliente = idCliente;
+                agendamento.Servico = servicoExiste;
+                agendamento.Cliente = clienteExiste;
                 return agendamentoDao.Update(agendamento);
             }
             else
@@ -76,7 +80,7 @@ namespace HairHub.service
 
         public string ExcluirAgendamento(int id)
         {
-            Agendamento agendamento = agendamentoDao.FindById(id);
+            Agendamento agendamento = new Agendamento(id);
             if (agendamento != null && agendamento.Id == id)
             {
                 return agendamentoDao.Delete(agendamento);
@@ -90,19 +94,29 @@ namespace HairHub.service
         public List<Agendamento> ObterTodosAgendamentos()
         {
             List<Agendamento> agendamentos = new List<Agendamento>();
-
+            ServicoService servicoService = new ServicoService();
+            ClienteService clienteService = new ClienteService();
 
             var reader = agendamentoDao.FindAll();
 
             while (reader.Read())
             {
-                string data = reader["DATA"].ToString();
-                string hora = reader["HORA"].ToString();
-                int IdServico = reader.GetInt32(reader.GetOrdinal("ID_SERVICO"));
-                int IdCliente = reader.GetInt32(reader.GetOrdinal("ID_CLIENTE"));
-                int id = reader.GetInt32(reader.GetOrdinal("ID"));
+                string data = reader["AG_DATA"].ToString();
+                string hora = reader["AG_HORA"].ToString();
+                Servico servico = new Servico(
+                    reader.GetInt32(reader.GetOrdinal("SV_ID")),
+                    reader["SV_NOME"].ToString(),
+                    reader["SV_DESCRICAO"].ToString(),
+                    reader["SV_VALOR"].ToString()
+                 );
+                Cliente cliente = new Cliente
+                (  reader.GetInt32(reader.GetOrdinal("CLI_ID")),
+                   reader["CLI_NOME"].ToString(),
+                   reader["CLI_TELEFONE"].ToString()
+                );
+                int id = reader.GetInt32(reader.GetOrdinal("AG_ID"));
 
-                Agendamento agendamento = new Agendamento(id, data, hora, IdServico, IdCliente);
+                Agendamento agendamento = new Agendamento(id, data, hora, servico, cliente);
                 agendamentos.Add(agendamento);
             }
 
@@ -126,5 +140,17 @@ namespace HairHub.service
             }
 
         }
+
+        public List<Agendamento> ObterAgendamentoPorNome(string nome)
+        {
+            List<Agendamento> agendamentos = new List<Agendamento>();
+            agendamentos = agendamentoDao.FindByName(nome);
+
+
+            ConnDB.closeConnection();
+           
+            return agendamentos;
+        }
+
     }
 }

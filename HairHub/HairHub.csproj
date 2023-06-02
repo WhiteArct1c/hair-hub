@@ -218,5 +218,8 @@
   <ItemGroup>
     <None Include="Resources\pesquisar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-out %282%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

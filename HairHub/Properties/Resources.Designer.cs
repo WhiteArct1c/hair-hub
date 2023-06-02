@@ -73,6 +73,16 @@ namespace HairHub.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cross_out__2_ {
+            get {
+                object obj = ResourceManager.GetObject("cross-out (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LogoHairHub {
             get {
                 object obj = ResourceManager.GetObject("LogoHairHub", resourceCulture);

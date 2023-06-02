@@ -19,5 +19,6 @@ namespace HairHub.dao
 
         T FindById(int id);
 
+        List<T> FindByName(string name);
     }
 }

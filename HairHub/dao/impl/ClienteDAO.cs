@@ -89,7 +89,7 @@ namespace HairHub.dao.impl
             StringBuilder response = new StringBuilder();
             MySqlDataReader dr = null;
 
-            sql.Append("SELECT * FROM CLIENTE");
+            sql.Append("SELECT * FROM CLIENTE ORDER BY ID");
 
             try
             {
@@ -141,7 +141,7 @@ namespace HairHub.dao.impl
             StringBuilder response = new StringBuilder();
             MySqlDataReader dr = null;
 
-            sql.Append("SELECT DISTINCT C.NOME, C.TELEFONE, SV.NOME AS NOMESV, SV.VALOR ");
+            sql.Append("SELECT C.NOME, C.TELEFONE, SV.NOME AS NOMESV, SV.VALOR ");
             sql.Append("FROM AGENDAMENTO AG ");
             sql.Append("INNER JOIN CLIENTE C ON C.ID = AG.ID_CLIENTE ");
             sql.Append("INNER JOIN SERVICO SV ON SV.ID = AG.ID_SERVICO ");
@@ -159,6 +159,39 @@ namespace HairHub.dao.impl
             }
 
             return dr;
+        }
+
+        public List<Cliente> FindByName(string name)
+        {
+            StringBuilder sql = new StringBuilder();
+            StringBuilder response = new StringBuilder();
+            
+            List<Cliente> clientes = new List<Cliente>();
+
+            sql.Append("SELECT DISTINCT ID, NOME, TELEFONE FROM CLIENTE WHERE NOME LIKE '" + name + "%'");
+
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql.ToString(), ConnDB.openConnection());
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Cliente cliente = new Cliente();
+                    cliente.Id = dr.GetInt32(dr.GetOrdinal("ID"));
+                    cliente.Nome = dr["NOME"].ToString();
+                    cliente.Telefone = dr["TELEFONE"].ToString();
+                    clientes.Add(cliente);
+                }
+
+                ConnDB.closeConnection();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                response.Append("Erro interno ao encontrar cliente solicitado, por favor, tente novamente mais tarde!");
+            }
+            return clientes;
         }
 
     }

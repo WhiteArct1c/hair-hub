@@ -136,5 +136,40 @@ namespace HairHub.dao.impl
             }
             return servico;
         }
+
+        public List<Servico> FindByName(string name)
+        {
+            StringBuilder sql = new StringBuilder();
+            StringBuilder response = new StringBuilder();
+       
+            List<Servico> servicos = new List<Servico>();
+
+            sql.Append("SELECT DISTINCT ID, NOME, DESCRICAO, VALOR FROM SERVICO WHERE NOME LIKE '" + name + "%'");
+
+            try
+            {
+                MySqlCommand command = new MySqlCommand(sql.ToString(), ConnDB.openConnection());
+                MySqlDataReader dr = command.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    Servico servico = new Servico();
+                    servico.Id = Convert.ToInt32(dr[0]);
+                    servico.Nome = dr[1].ToString();
+                    servico.Descricao = dr[2].ToString();
+                    servico.Valor = dr[3].ToString();
+
+                    servicos.Add(servico);
+                }
+
+                ConnDB.closeConnection();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                response.Append("Erro interno ao encontrar cliente solicitado, por favor, tente novamente mais tarde!");
+            }
+            return servicos;
+        }
     }
 }
