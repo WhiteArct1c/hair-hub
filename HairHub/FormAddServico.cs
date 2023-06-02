@@ -60,18 +60,18 @@ namespace HairHub
                     MessageBox.Show(resposta);
 
                 }
-                Clear();
-                _parent.Display();
-                this.Close();
-                
-
             }
             catch (Exception error)
             {
                 Console.WriteLine(error.Message);
                 MessageBox.Show("Erro, tente novamente!");
             }
-            _parent.Display();
+            finally
+            {
+                Clear();
+                _parent.Display();
+                this.Close();
+            }
         }
 
 

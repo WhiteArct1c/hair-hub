@@ -169,6 +169,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAgendamentos.resx">
       <DependentUpon>FormAgendamentos.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="service\AgendamentoService.cs" />
     <Compile Include="service\ClienteService.cs" />
@@ -183,6 +184,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

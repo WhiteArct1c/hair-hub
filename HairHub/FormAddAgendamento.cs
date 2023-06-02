@@ -30,7 +30,7 @@ namespace HairHub
             lblTitle.Text = "Editar Agendamento";
             btnNovo.Text = "Editar";
             //txtNome.Text = servico;
-           // txtServico.Text = cliente;
+            //txtServico.Text = cliente;
             txtData.Text = data;
             txtHora.Text = hora;
         }
@@ -63,20 +63,19 @@ namespace HairHub
                     string resposta = service.AtualizarAgendamento(int.Parse(id), txtData.Text, txtHora.Text, int.Parse(txtNome.Text), int.Parse(txtServico.Text));
                     MessageBox.Show(resposta);
                 }
-
-                Clear();
-                _parent.Display();
-                this.Close();
-
+     
             }
             catch (Exception error)
             {
                 Console.WriteLine(error.Message);
                 MessageBox.Show("Erro, tente novamente!");
             }
-            _parent.Display();
-
-
+            finally
+            {
+                Clear();
+                _parent.Display();
+                this.Close();
+            }
         }
     }
 }

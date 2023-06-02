@@ -55,18 +55,18 @@ namespace HairHub
                     string resposta = service.AtualizarCliente(int.Parse(id), txtNome.Text, txtTelefone.Text);
                     MessageBox.Show(resposta);
                 }
-                Clear();
-                _parent.Display();
-                this.Close();
-
-
-            }
+             }
             catch (Exception error)
             {
                 Console.WriteLine(error.Message);
                 MessageBox.Show("Erro, tente novamente!");
             }
+            finally
+            {
+                Clear();
                 _parent.Display();
+                this.Close();
+            }
         }
 
     }

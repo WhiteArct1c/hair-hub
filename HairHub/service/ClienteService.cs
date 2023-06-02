@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace HairHub.service
 {
@@ -21,8 +22,12 @@ namespace HairHub.service
 
         public string CadastrarCliente(string nome, string telefone)
         {
-                Cliente novoCliente = new Cliente(nome, telefone);
-                return clienteDao.Create(novoCliente);
+            if(nome.Trim() == null || nome.Trim() == "" || Regex.IsMatch(nome, "[0-9]"))
+            {
+                return "Nome do cliente é obrigatório e deve ser válido!";
+            }
+            Cliente novoCliente = new Cliente(nome, telefone);
+            return clienteDao.Create(novoCliente);
         }
 
         public string AtualizarCliente(int id, string nome, string telefone)
