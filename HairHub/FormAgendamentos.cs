@@ -111,11 +111,9 @@ namespace HairHub.Forms
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-
             Display();
             txtPesquisar.Clear();
             btnLimpar.Visible = false;
-
         }
     }
 }
