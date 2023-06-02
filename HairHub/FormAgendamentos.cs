@@ -3,6 +3,7 @@ using HairHub.model;
 using HairHub.service;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HairHub.Forms
@@ -40,6 +41,7 @@ namespace HairHub.Forms
             }
             AgendamentoService agendamento = new AgendamentoService();
             List<Agendamento> agendamentos = agendamento.ObterTodosAgendamentos();
+          
 
             foreach (var agenda in agendamentos)
             {
@@ -75,13 +77,13 @@ namespace HairHub.Forms
             {
                 form.Clear();
 
+
                 form.id = dataGridAgendamentos.Rows[e.RowIndex].Cells[0].Value.ToString();
                 form.servico = dataGridAgendamentos.Rows[e.RowIndex].Cells[1].Value.ToString();
                 form.cliente = dataGridAgendamentos.Rows[e.RowIndex].Cells[2].Value.ToString();
                
                 form.data = dataGridAgendamentos.Rows[e.RowIndex].Cells[3].Value.ToString();
                 form.hora = dataGridAgendamentos.Rows[e.RowIndex].Cells[4].Value.ToString();
-               
                 form.UpdateInfo();
                 form.ShowDialog();  
 

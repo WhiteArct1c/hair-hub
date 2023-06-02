@@ -36,8 +36,10 @@ namespace HairHub
             }
                 ServicoService servico = new ServicoService();
                 List<Servico> servicos = servico.ObterTodosServicos();
+                
+                
 
-                foreach (var serv in servicos)
+            foreach (var serv in servicos)
                 {
                     dataGridServicos.Rows.Add(serv.Id, serv.Nome, serv.Descricao, serv.Valor);
                 } 

@@ -9,8 +9,8 @@ namespace HairHub.db
     {
         private static MySqlConnection connectionString = new MySqlConnection(
             "server=aws.connect.psdb.cloud;" +
-            "User Id=sv0i9tznkqgflzxfablx;database=hairhubdb;" +
-            "password=pscale_pw_CLfYSHyDONde5kR179NbaZaqKBWvi3rKVMdLT8h5irX"
+            "User Id=19uvw83cwiyiuznaza4s;database=hairhubdb;" +
+            "password=pscale_pw_v0z4WeUYExmfegWnGq1f5Zt10QvJrx2wPenoraGA1S2"
             );
 
         public static MySqlConnection openConnection()
