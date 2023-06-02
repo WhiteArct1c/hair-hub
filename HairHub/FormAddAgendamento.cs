@@ -29,8 +29,8 @@ namespace HairHub
         {
             lblTitle.Text = "Editar Agendamento";
             btnNovo.Text = "Editar";
-            txtNome.Text = servico;
-            txtServico.Text = cliente;
+            //txtNome.Text = servico;
+           // txtServico.Text = cliente;
             txtData.Text = data;
             txtHora.Text = hora;
         }

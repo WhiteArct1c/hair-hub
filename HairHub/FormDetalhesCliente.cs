@@ -35,14 +35,14 @@ namespace HairHub
 
             List<ClienteServico> clienteServico = cliente.ObterServicosCliente(historicoCliente);
 
-         
+
+            dataGridDetalhesCliente.Rows.Clear();
 
          foreach (var historico in clienteServico)
             {
-                Console.WriteLine(historico.NomeCliente, historico.TelefoneCliente, historico.NomeServico, historico.ValorServico);
-         
-
+             
                 dataGridDetalhesCliente.Rows.Add(historico.NomeCliente, historico.TelefoneCliente, historico.NomeServico, historico.ValorServico);
+
             };
         
 

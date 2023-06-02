@@ -64,6 +64,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridDetalhesCliente.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridDetalhesCliente.Enabled = false;
             this.dataGridDetalhesCliente.Location = new System.Drawing.Point(65, 73);
             this.dataGridDetalhesCliente.Name = "dataGridDetalhesCliente";
             this.dataGridDetalhesCliente.ReadOnly = true;
